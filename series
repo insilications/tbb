@@ -1,5 +1,5 @@
 #build.patch
 #timestamp.patch
 #defaults.patch
-Fix-paths-in-pc-files-with-absolute-GNUInstallDirs.patch
+#Fix-paths-in-pc-files-with-absolute-GNUInstallDirs.patch
 0001-Disable-distutils-default-flags.patch
