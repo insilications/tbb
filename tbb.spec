@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : tbb
 Version  : 2021.5.0
-Release  : 208
+Release  : 210
 URL      : file:///aot/build/clearlinux/packages/tbb/tbb-v2021.5.0.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/tbb/tbb-v2021.5.0.tar.gz
 Summary  : C++ library for parallel programming on multi-core processors.
@@ -97,7 +97,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640299130
+export SOURCE_DATE_EPOCH=1640300551
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -200,6 +200,9 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 export ASMFLAGS="${ASMFLAGS_GENERATE}"
 export LIBS="${LIBS_GENERATE}"
 %cmake ..   -GNinja \
+-DCMAKE_JOB_POOL_COMPILE:STRING="compile" \
+-DCMAKE_JOB_POOL_LINK:STRING="link" \
+-DCMAKE_JOB_POOLS:STRING="compile=5;link=1" \
 -DTBB_BUILD:BOOL=ON \
 -DTBBMALLOC_BUILD:BOOL=ON \
 -DTBBMALLOC_PROXY_BUILD:BOOL=ON \
@@ -236,6 +239,9 @@ export LDFLAGS="${LDFLAGS_USE}"
 export ASMFLAGS="${ASMFLAGS_USE}"
 export LIBS="${LIBS_USE}"
 %cmake .. -GNinja \
+-DCMAKE_JOB_POOL_COMPILE:STRING="compile" \
+-DCMAKE_JOB_POOL_LINK:STRING="link" \
+-DCMAKE_JOB_POOLS:STRING="compile=5;link=1" \
 -DTBB_BUILD:BOOL=ON \
 -DTBBMALLOC_BUILD:BOOL=ON \
 -DTBBMALLOC_PROXY_BUILD:BOOL=ON \
@@ -354,6 +360,9 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 export ASMFLAGS="${ASMFLAGS_GENERATE}"
 export LIBS="${LIBS_GENERATE}"
 %cmake .. -GNinja \
+-DCMAKE_JOB_POOL_COMPILE:STRING="compile" \
+-DCMAKE_JOB_POOL_LINK:STRING="link" \
+-DCMAKE_JOB_POOLS:STRING="compile=5;link=1" \
 -DTBB_BUILD:BOOL=ON \
 -DTBBMALLOC_BUILD:BOOL=ON \
 -DTBBMALLOC_PROXY_BUILD:BOOL=ON \
@@ -390,6 +399,9 @@ export LDFLAGS="${LDFLAGS_USE}"
 export ASMFLAGS="${ASMFLAGS_USE}"
 export LIBS="${LIBS_USE}"
 %cmake .. -GNinja \
+-DCMAKE_JOB_POOL_COMPILE:STRING="compile" \
+-DCMAKE_JOB_POOL_LINK:STRING="link" \
+-DCMAKE_JOB_POOLS:STRING="compile=5;link=1" \
 -DTBB_BUILD:BOOL=ON \
 -DTBBMALLOC_BUILD:BOOL=ON \
 -DTBBMALLOC_PROXY_BUILD:BOOL=ON \
@@ -409,7 +421,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1640299130
+export SOURCE_DATE_EPOCH=1640300551
 rm -rf %{buildroot}
 pushd clr-build-special
 %ninja_install_special  || :
