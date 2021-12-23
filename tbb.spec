@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : tbb
 Version  : 2021.5.0
-Release  : 207
+Release  : 208
 URL      : file:///aot/build/clearlinux/packages/tbb/tbb-v2021.5.0.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/tbb/tbb-v2021.5.0.tar.gz
 Summary  : C++ library for parallel programming on multi-core processors.
@@ -97,7 +97,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640274811
+export SOURCE_DATE_EPOCH=1640299130
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -200,17 +200,6 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 export ASMFLAGS="${ASMFLAGS_GENERATE}"
 export LIBS="${LIBS_GENERATE}"
 %cmake ..   -GNinja \
--DCMAKE_C_FLAGS="$CFLAGS" \
--DCMAKE_CXX_FLAGS="$CXXFLAGS" \
--DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_MODULE_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_CXX_COMPILER=g++ \
--DCMAKE_C_COMPILER=gcc \
--DCMAKE_JOB_POOLS="full_jobs=10" \
--DCMAKE_JOB_POOL_COMPILE="full_jobs" \
--DCMAKE_JOB_POOL_LINK="full_jobs" \
--DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
 -DTBB_BUILD:BOOL=ON \
 -DTBBMALLOC_BUILD:BOOL=ON \
 -DTBBMALLOC_PROXY_BUILD:BOOL=ON \
@@ -222,9 +211,9 @@ export LIBS="${LIBS_GENERATE}"
 -DTBB_TEST_SPEC:BOOL=OFF \
 -DTBB_TEST:BOOL=ON
 ## make_macro content
-ninja --verbose -j10
-ninja --verbose -j10 python_build || :
-ninja --verbose -j10 irml || :
+ninja --verbose -j6
+ninja --verbose -j6 python_build || :
+ninja --verbose -j6 irml || :
 ## make_macro end
 
 ## profile_payload start
@@ -247,17 +236,6 @@ export LDFLAGS="${LDFLAGS_USE}"
 export ASMFLAGS="${ASMFLAGS_USE}"
 export LIBS="${LIBS_USE}"
 %cmake .. -GNinja \
--DCMAKE_C_FLAGS="$CFLAGS" \
--DCMAKE_CXX_FLAGS="$CXXFLAGS" \
--DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_MODULE_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_CXX_COMPILER=g++ \
--DCMAKE_C_COMPILER=gcc \
--DCMAKE_JOB_POOLS="full_jobs=10" \
--DCMAKE_JOB_POOL_COMPILE="full_jobs" \
--DCMAKE_JOB_POOL_LINK="full_jobs" \
--DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
 -DTBB_BUILD:BOOL=ON \
 -DTBBMALLOC_BUILD:BOOL=ON \
 -DTBBMALLOC_PROXY_BUILD:BOOL=ON \
@@ -269,9 +247,9 @@ export LIBS="${LIBS_USE}"
 -DTBB_TEST_SPEC:BOOL=OFF \
 -DTBB_TEST:BOOL=OFF
 ## make_macro content
-ninja --verbose -j10
-ninja --verbose -j10 python_build || :
-ninja --verbose -j10 irml || :
+ninja --verbose -j6
+ninja --verbose -j6 python_build || :
+ninja --verbose -j6 irml || :
 ## make_macro end
 fi
 popd
@@ -376,17 +354,6 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 export ASMFLAGS="${ASMFLAGS_GENERATE}"
 export LIBS="${LIBS_GENERATE}"
 %cmake .. -GNinja \
--DCMAKE_C_FLAGS="$CFLAGS" \
--DCMAKE_CXX_FLAGS="$CXXFLAGS" \
--DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_MODULE_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_CXX_COMPILER=g++ \
--DCMAKE_C_COMPILER=gcc \
--DCMAKE_JOB_POOLS="full_jobs=10" \
--DCMAKE_JOB_POOL_COMPILE="full_jobs" \
--DCMAKE_JOB_POOL_LINK="full_jobs" \
--DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
 -DTBB_BUILD:BOOL=ON \
 -DTBBMALLOC_BUILD:BOOL=ON \
 -DTBBMALLOC_PROXY_BUILD:BOOL=ON \
@@ -398,9 +365,9 @@ export LIBS="${LIBS_GENERATE}"
 -DTBB_TEST_SPEC:BOOL=OFF \
 -DTBB_TEST:BOOL=ON
 ## make_macro content
-ninja --verbose -j10
-ninja --verbose -j10 python_build || :
-ninja --verbose -j10 irml || :
+ninja --verbose -j6
+ninja --verbose -j6 python_build || :
+ninja --verbose -j6 irml || :
 ## make_macro end
 
 ## profile_payload start
@@ -423,17 +390,6 @@ export LDFLAGS="${LDFLAGS_USE}"
 export ASMFLAGS="${ASMFLAGS_USE}"
 export LIBS="${LIBS_USE}"
 %cmake .. -GNinja \
--DCMAKE_C_FLAGS="$CFLAGS" \
--DCMAKE_CXX_FLAGS="$CXXFLAGS" \
--DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_MODULE_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
--DCMAKE_CXX_COMPILER=g++ \
--DCMAKE_C_COMPILER=gcc \
--DCMAKE_JOB_POOLS="full_jobs=10" \
--DCMAKE_JOB_POOL_COMPILE="full_jobs" \
--DCMAKE_JOB_POOL_LINK="full_jobs" \
--DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
 -DTBB_BUILD:BOOL=ON \
 -DTBBMALLOC_BUILD:BOOL=ON \
 -DTBBMALLOC_PROXY_BUILD:BOOL=ON \
@@ -445,15 +401,15 @@ export LIBS="${LIBS_USE}"
 -DTBB_TEST_SPEC:BOOL=OFF \
 -DTBB_TEST:BOOL=OFF
 ## make_macro content
-ninja --verbose -j10
-ninja --verbose -j10 python_build || :
-ninja --verbose -j10 irml || :
+ninja --verbose -j6
+ninja --verbose -j6 python_build || :
+ninja --verbose -j6 irml || :
 ## make_macro end
 fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1640274811
+export SOURCE_DATE_EPOCH=1640299130
 rm -rf %{buildroot}
 pushd clr-build-special
 %ninja_install_special  || :
