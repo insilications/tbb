@@ -1,1 +1,4 @@
+exit 1
+export TBB_TEST_LOW_WORKLOAD=1
 ctest --parallel 1 --verbose --progress || :
+cmake "-DTBB_BINARIES_PATH=/builddir/build/BUILD/tbb/clr-build-special/gnu_11.2_cxx11_64_none" "-DPYTHON_MODULE_BUILD_PATH=/builddir/build/BUILD/tbb/clr-build-special/python/lib.linux-x86_64-3.10" "-P" "/builddir/build/BUILD/tbb/cmake/python/test_launcher.cmake"
