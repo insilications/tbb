@@ -61,6 +61,5 @@ xz-staticdev
 yaml-cpp
 yaml-cpp-dev
 Z3-dev
-Z3-staticdev
 zlib-dev
 zlib-staticdev

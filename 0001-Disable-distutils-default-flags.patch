@@ -1,7 +1,7 @@
-From eb67ab371f10b50b7ff109f1783adbf22ce5b63e Mon Sep 17 00:00:00 2001
+From 55d44d33cbf2f556d33cfd09e47cfffe0d74070f Mon Sep 17 00:00:00 2001
 From: Francisco Boni <boboniboni@gmail.com>
 Date: Sun, 16 May 2021 18:37:42 -0300
-Subject: [PATCH] Disable distutils default flags
+Subject: [PATCH 1/2] Disable distutils default flags
 
 ---
  python/setup.py | 12 ++++++++++++
@@ -38,5 +38,5 @@ index f084e705..7b427a51 100644
  class TBBBuild(build):
      sub_commands = [  # define build order
 -- 
-2.31.1
+2.34.1
 
